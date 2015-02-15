@@ -2,9 +2,11 @@
 namespace Moneta;
 
 use Moneta\Event\AccountOpened;
+use Moneta\Identity\UUID;
 
 final class Account
 {
+    private $id;
     private $changes = [];
 
     public static function open()
@@ -18,6 +20,7 @@ final class Account
 
     private function __construct()
     {
+        $this->id = new UUID;
     }
 
     public function hasUncommittedChanges()
@@ -33,6 +36,11 @@ final class Account
     public function commitChanges()
     {
         $this->changes = [];
+    }
+
+    public function id()
+    {
+        return $this->id;
     }
 
     private function apply(AccountOpened $event)

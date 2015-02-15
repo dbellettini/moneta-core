@@ -2,6 +2,7 @@
 namespace Moneta;
 
 use Moneta\Event\AccountOpened;
+use Moneta\Identity\UUID;
 
 class AccountTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,5 +45,22 @@ class AccountTest extends \PHPUnit_Framework_TestCase
             $account->hasUncommittedChanges(),
             'Expecting that there are no uncomitted changes after commit'
         );
+    }
+
+    /** @test */
+    public function it_should_have_an_uuid()
+    {
+        $this->assertInstanceOf(
+            UUID::class,
+            Account::open()->id()
+        );
+    }
+
+    /** @test */
+    public function it_should_have_a_stable_uuid()
+    {
+        $account = Account::open();
+
+        $this->assertSame($account->id(), $account->id());
     }
 }
