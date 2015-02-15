@@ -20,7 +20,7 @@ final class Account
 
     private function __construct()
     {
-        $this->id = new UUID;
+        $this->id = UUID::random();
     }
 
     public function hasUncommittedChanges()
