@@ -24,6 +24,6 @@ final class UUID
 
     public function __toString()
     {
-        return (string)$this->wrapped;
+        return (string) $this->wrapped;
     }
 }

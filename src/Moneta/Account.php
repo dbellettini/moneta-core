@@ -2,7 +2,6 @@
 namespace Moneta;
 
 use Moneta\Event\AccountOpened;
-use Moneta\Identity\UUID;
 
 final class Account extends AggregateRoot
 {
