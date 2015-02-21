@@ -7,7 +7,7 @@ use Moneta\Identity\UUID;
 class AccountTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
-    public function it_should_be_opened()
+    public function it_can_be_opened()
     {
         $account = Account::open();
 
@@ -15,7 +15,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_have_uncommitted_changes_when_opened()
+    public function it_has_uncommitted_changes_when_opened()
     {
         $account = Account::open();
 
@@ -26,7 +26,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_be_able_to_return_uncommitted_changes()
+    public function it_is_able_to_return_uncommitted_changes()
     {
         $changes = Account::open()->getUncommittedChanges();
 
@@ -35,7 +35,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_be_able_to_commit_changes()
+    public function it_is_able_to_commit_changes()
     {
         $account = Account::open();
 
@@ -48,7 +48,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_have_an_uuid()
+    public function it_has_an_uuid_identity()
     {
         $this->assertInstanceOf(
             UUID::class,
@@ -57,7 +57,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_have_a_stable_uuid()
+    public function it_has_a_stable_identity()
     {
         $account = Account::open();
 
@@ -74,7 +74,7 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_should_have_no_uncommitted_changes_when_loaded_from_history()
+    public function it_has_no_uncommitted_changes_when_loaded_from_history()
     {
         $account = Account::fromHistory(Account::open()->getUncommittedChanges());
 
