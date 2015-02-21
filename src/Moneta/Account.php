@@ -13,14 +13,24 @@ final class Account extends AggregateRoot
     {
         $account = new self();
 
-        $account->apply(new AccountOpened);
+        $account->apply(new AccountOpened, true);
+
+        return $account;
+    }
+
+    public static function fromHistory(array $history)
+    {
+        $account = new self();
+
+        foreach ($history as $event) {
+            $account->apply($event, false);
+        }
 
         return $account;
     }
 
     private function __construct()
     {
-        $this->id = UUID::random();
     }
 
     public function hasUncommittedChanges()
@@ -43,8 +53,12 @@ final class Account extends AggregateRoot
         return $this->id;
     }
 
-    private function apply(AccountOpened $event)
+    private function apply(AccountOpened $event, $new)
     {
-        $this->changes[] = $event;
+        if ($new) {
+            $this->changes[] = $event;
+        }
+
+        $this->id = $event->id();
     }
 }

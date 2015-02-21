@@ -63,4 +63,21 @@ class AccountTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($account->id(), $account->id());
     }
+
+    /** @test */
+    public function it_can_be_loaded_from_history()
+    {
+        $account1 = Account::open();
+        $account2 = Account::fromHistory($account1->getUncommittedChanges());
+
+        $this->assertEquals($account1->id(), $account2->id());
+    }
+
+    /** @test */
+    public function it_should_have_no_uncommitted_changes_when_loaded_from_history()
+    {
+        $account = Account::fromHistory(Account::open()->getUncommittedChanges());
+
+        $this->assertFalse($account->hasUncommittedChanges());
+    }
 }
