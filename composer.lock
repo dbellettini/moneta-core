@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3ec06d1b06cc699b84b66a884dab1b9f",
+    "hash": "64df37ad6cbfeeb55fbcb0b6533d6c77",
     "packages": [
         {
             "name": "rhumsaa/uuid",
