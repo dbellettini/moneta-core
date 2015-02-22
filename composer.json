@@ -6,6 +6,7 @@
         "psr-0": { "Moneta": "src/" }
     },
     "require": {
+        "php": ">=5.6.0",
         "rhumsaa/uuid": "~2.8"
     },
     "require-dev": {

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "64df37ad6cbfeeb55fbcb0b6533d6c77",
+    "hash": "1097eae09a434dff0986bb243d4d760e",
     "packages": [
         {
             "name": "rhumsaa/uuid",
@@ -1031,6 +1031,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6.0"
+    },
     "platform-dev": []
 }
