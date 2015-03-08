@@ -1,5 +1,5 @@
 {
-    "name": "dbellettini/moneta",
+    "name": "caveja/moneta-core",
     "description": "Personal budget management",
     "license": "AGPL-3.0",
     "autoload": {
