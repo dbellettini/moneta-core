@@ -1,6 +1,8 @@
 <?php
 namespace Moneta;
 
-abstract class AggregateRoot
+use Broadway\EventSourcing\EventSourcedAggregateRoot;
+
+abstract class AggregateRoot extends EventSourcedAggregateRoot
 {
 }

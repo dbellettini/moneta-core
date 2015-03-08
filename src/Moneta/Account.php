@@ -1,6 +1,7 @@
 <?php
 namespace Moneta;
 
+use Broadway\Domain\DomainEventStream;
 use Moneta\Event\AccountOpened;
 
 final class Account extends AggregateRoot
@@ -12,7 +13,7 @@ final class Account extends AggregateRoot
     {
         $account = new self();
 
-        $account->apply(new AccountOpened, true);
+        $account->apply(new AccountOpened);
 
         return $account;
     }
@@ -21,9 +22,7 @@ final class Account extends AggregateRoot
     {
         $account = new self();
 
-        foreach ($history as $event) {
-            $account->apply($event, false);
-        }
+        $account->initializeState(new DomainEventStream($history));
 
         return $account;
     }
@@ -32,32 +31,13 @@ final class Account extends AggregateRoot
     {
     }
 
-    public function hasUncommittedChanges()
+    public function getAggregateRootId()
     {
-        return count($this->changes) > 0;
+        return (string) $this->id;
     }
 
-    public function getUncommittedChanges()
+    protected function applyAccountOpened(AccountOpened $event)
     {
-        return $this->changes;
-    }
-
-    public function commitChanges()
-    {
-        $this->changes = [];
-    }
-
-    public function id()
-    {
-        return $this->id;
-    }
-
-    private function apply(AccountOpened $event, $new)
-    {
-        if ($new) {
-            $this->changes[] = $event;
-        }
-
         $this->id = $event->id();
     }
 }
