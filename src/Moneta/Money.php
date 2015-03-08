@@ -12,7 +12,9 @@ final class Money
 
     public static function fromString($string)
     {
-        preg_match('/^([0-9]+).([0-9]{2}) ([A-Z]{3})/', $string, $matches);
+        if (!preg_match('/^([0-9]+).([0-9]{2}) ([A-Z]{3})$/', $string, $matches)) {
+            throw new MalformedMoney($string);
+        }
 
         return new self(
             100 * (int) $matches[1] + (int) $matches[2],

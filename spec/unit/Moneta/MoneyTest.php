@@ -35,4 +35,13 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cents, $money->cents());
         $this->assertEquals($currency, $money->currency());
     }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     */
+    public function it_throws_an_exception_on_malformed_string()
+    {
+        Money::fromString('1.00 EURO');
+    }
 }
