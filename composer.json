@@ -1,6 +1,6 @@
 {
     "name": "caveja/moneta-core",
-    "description": "Personal budget management",
+    "description": "Personal budget management (core)",
     "license": "AGPL-3.0",
     "autoload": {
         "psr-0": { "Moneta": "src/" }
